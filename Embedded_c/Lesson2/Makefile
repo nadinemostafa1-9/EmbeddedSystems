@@ -12,10 +12,10 @@ all: $(proj_name).bin
 	@echo "Build is done"
 
 %.o: %.s
-	$(compiler)as.exe $(CFLAGS) $< -o $@
+	$(compiler)as.exe  $(CFLAGS) $< -o $@
 
 %.o: %.c
-	$(compiler)gcc.exe -c $(INCS) $(CFLAGS) $< -o $@
+	$(compiler)gcc.exe -c $(INCS)  $(CFLAGS) $< -o $@
 
 $(proj_name).elf: $(OBJ) $(AsOBJ)
 	$(compiler)ld.exe -T linker_script.ld $(LIBS) $(OBJ) $(AsOBJ) -o $@ -Map=Map_file.map
@@ -29,4 +29,3 @@ clean_all:
 
 clean:
 	rm *.elf *.bin
-
